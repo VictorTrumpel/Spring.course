@@ -2,6 +2,9 @@ package victor.com;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
 public class ClassicalMusic implements Music {
 
@@ -16,5 +19,15 @@ public class ClassicalMusic implements Music {
 
   public String[] getSong() {
     return this.songs;
+  }
+
+  @PostConstruct
+  public void doMyInit() {
+    System.out.println("Doing my init");
+  }
+
+  @PreDestroy // работает только в singleton скоупе
+  public void doMyDestroy() {
+    System.out.println("Doing my destroy");
   }
 }
