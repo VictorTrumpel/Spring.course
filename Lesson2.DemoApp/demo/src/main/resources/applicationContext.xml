@@ -8,6 +8,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
     
     <context:property-placeholder location="classpath:musicPlayer.properties" />
+    <context:component-scan base-package="victor.com" />
 
     <bean 
       id="classicalMusic" 
@@ -17,9 +18,10 @@
       factory-method="getClassicalMusic"
     ></bean>
 
-    <bean id="rockMusic" class="victor.com.RockMusic"></bean>
+    <!-- Создадим через аннотацию -->
+    <!-- <bean id="rockMusic" class="victor.com.RockMusic"></bean> -->
 
-    <bean id="rapMusic" class="victor.com.RapMusic"></bean>
+    <!-- <bean id="rapMusic" class="victor.com.RapMusic"></bean> -->
 
     <bean 
       id="musicPlayer" 
