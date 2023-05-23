@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class RapMusic implements Music {
 
-  public String getSong() {
-    return "2Pac rapping";
+  String[] songs = { "Like a 2Pack", "Detroit", "Cool Nigga" };
+
+  public String[] getSong() {
+    return songs;
   }
 }

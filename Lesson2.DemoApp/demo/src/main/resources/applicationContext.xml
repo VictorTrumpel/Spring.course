@@ -10,20 +10,20 @@
     <context:property-placeholder location="classpath:musicPlayer.properties" />
     <context:component-scan base-package="victor.com" />
 
-    <bean 
+    <!-- <bean 
       id="classicalMusic" 
       class="victor.com.ClassicalMusic"
       init-method="doMyInit"
       destroy-method="doMyDestroy"
       factory-method="getClassicalMusic"
-    ></bean>
+    ></bean> -->
 
     <!-- Создадим через аннотацию -->
     <!-- <bean id="rockMusic" class="victor.com.RockMusic"></bean> -->
 
     <!-- <bean id="rapMusic" class="victor.com.RapMusic"></bean> -->
 
-    <bean 
+    <!-- <bean 
       id="musicPlayer" 
       class="victor.com.MusicPlayer"
       scope="prototype"
@@ -38,6 +38,6 @@
 
       <property name="name" value="${musicPlayer.name}" />
       <property name="volume" value="${musicPlayer.volume}" />
-    </bean>
+    </bean> -->
 
 </beans>

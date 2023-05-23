@@ -3,43 +3,32 @@ package victor.com;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+@Component
 public class MusicPlayer {
-  private List<Music> musicList = new ArrayList<Music>();
+  private Music classicalMusic;
+  private Music rockMusic;
 
-  private String name;
-  private int volume;
-
-  // IoC
-  // public MusicPlayer(Music music) {
-  // this.music = music;
-  // }
-
-  public void setMusicList(List<Music> musicList) {
-    this.musicList = musicList;
+  @Autowired
+  public MusicPlayer(
+      @Qualifier("classicalMusic") Music classicalMusic,
+      @Qualifier("rapMusic") Music rockMusic) {
+    this.classicalMusic = classicalMusic;
+    this.rockMusic = rockMusic;
   }
 
-  public void playMusic() {
-    for (int i = 0; i < musicList.size(); i++) {
-      System.out.println("playing :>> " + musicList.get(i).getSong());
+  public void playMusic(MusicGenre genre) {
+    Music musicToPlay = genre == MusicGenre.ROCK
+        ? this.rockMusic
+        : this.classicalMusic;
+
+    String[] songs = musicToPlay.getSong();
+
+    for (int i = 0; i < songs.length; i++) {
+      System.out.println("song is playing :>> " + songs[i]);
     }
   }
-
-  public String getName() {
-    return this.name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public int getVolume() {
-    return this.volume;
-  }
-
-  public void setVolume(int volume) {
-    this.volume = volume;
-  }
-
 }
